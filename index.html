@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery and KnockoutJS</title>
+    <meta charset="UTF-8">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="script.js"></script>    
+    <script type="text/javascript" src="knockout-3.4.1.js"></script>
+  </head>
+ <body>
+     <div class="container">
+         <div class="row">
+               <div class="col-xs-12 col-sm-6"> 
+                   KnockoutJS
+               </div>
+               <div class="col-xs-12 col-sm-6"> 
+                   <span data-bind="text: date"></span>
+               </div> 
+         </div>
+          <div class="row">
+                <div class="col-xs-12 col-sm-6"> 
+                   jQuery
+               </div>
+               <div class="col-xs-12 col-sm-6" id="id1"> 
+                   date
+               </div>  
+          </div>
+     </div>
+  </body>
+
+
+  <script>
+var date;
+
+var timerId = setInterval(function () {
+    date=new Date();
+    ko.applyBindings(date); 
+}, 1000);
+
+var timerId = setInterval(function (){
+ $("#id1").text(date);
+}, 1000);
+
+//_____Promises_____
+
+let promise = new Promise((resolve, reject) => {
+
+  setTimeout(() => {
+    resolve("Great!");
+  }, 1000);
+});
+
+promise.then(
+    result => {console.log("Fulfilled: " + result);},
+    error => {console.log("Rejected: " + error);}
+  );
+  </script>
+</html>
